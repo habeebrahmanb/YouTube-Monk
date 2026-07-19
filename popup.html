@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Monk</title>
+    <link rel="stylesheet" href="popup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-icon material-icons">visibility</span>
+                <span class="brand-text">YT Monk</span>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-item active" data-target="dashboard">
+                    <span class="material-icons">home</span> Dashboard
+                </button>
+                <button class="nav-item" data-target="seo">
+                    <span class="material-icons">trending_up</span> SEO
+                </button>
+                <button class="nav-item" data-target="thumbnail">
+                    <span class="material-icons">image</span> Thumbnail
+                </button>
+                <button class="nav-item" data-target="tags">
+                    <span class="material-icons">local_offer</span> Tags
+                </button>
+                <button class="nav-item" data-target="description">
+                    <span class="material-icons">description</span> Description
+                </button>
+                <button class="nav-item" data-target="stats">
+                    <span class="material-icons">bar_chart</span> Statistics
+                </button>
+                <button class="nav-item" data-target="copy">
+                    <span class="material-icons">content_copy</span> Copy Tools
+                </button>
+                <button class="nav-item" data-target="export">
+                    <span class="material-icons">file_download</span> Export
+                </button>
+                <button class="nav-item" data-target="settings">
+                    <span class="material-icons">settings</span> Settings
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="loader" id="main-loader">
+                <div class="spinner"></div>
+                <p>Analyzing Video...</p>
+            </div>
+            
+            <div id="content-container" style="display: none;">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="view-section active">
+                    <div class="header-gradient" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2 class="section-title" style="margin-bottom: 0;">Dashboard</h2>
+                        <button id="refresh-btn" class="btn" style="background: var(--bg-primary); border: 1px solid var(--border); color: var(--text-primary); padding: 6px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; font-size: 0.85rem;"><span class="material-icons" style="font-size: 1.1rem; margin-right: 4px;">refresh</span> Refresh</button>
+                    </div>
+                    <div class="card video-info">
+                        <img id="dash-thumbnail" src="" alt="Thumbnail" class="dash-thumb-img">
+                        <h3 id="dash-title">Loading...</h3>
+                        <p id="dash-channel" class="text-secondary"></p>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="material-icons">visibility</span>
+                            <div class="metric-info">
+                                <span class="metric-label">Views</span>
+                                <strong id="dash-views">-</strong>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="material-icons">thumb_up</span>
+                            <div class="metric-info">
+                                <span class="metric-label">Likes</span>
+                                <strong id="dash-likes">-</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-header">
+                            <h3>SEO Score</h3>
+                            <span id="dash-health" class="badge">Checking</span>
+                        </div>
+                        <div class="score-circle">
+                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" id="dash-score-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35" class="percentage" id="dash-score-text">0</text>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Additional sections would follow similar patterns -->
+                <section id="seo" class="view-section">
+                    <div class="header-gradient"><h2 class="section-title">SEO Analysis</h2></div>
+                    <div id="seo-results"></div>
+                </section>
+                <section id="thumbnail" class="view-section">
+                    <div class="header-gradient"><h2 class="section-title">Thumbnail Tools</h2></div>
+                    <div id="thumb-results"></div>
+                </section>
+                <section id="tags" class="view-section">
+                    <div class="header-gradient"><h2 class="section-title">Tags</h2></div>
+                    <div class="chip-container" id="tags-container"></div>
+                </section>
+                <section id="description" class="view-section">
+                    <div class="header-gradient"><h2 class="section-title">Description</h2></div>
+                    <div id="desc-results"></div>
+                </section>
+                <section id="stats" class="view-section">
+                    <div class="header-gradient"><h2 class="section-title">Statistics</h2></div>
+                    <div id="stats-results"></div>
+                </section>
+                <section id="copy" class="view-section">
+                    <div class="header-gradient"><h2 class="section-title">Copy Tools</h2></div>
+                    <div class="action-grid" id="copy-actions"></div>
+                </section>
+                <section id="export" class="view-section">
+                    <div class="header-gradient"><h2 class="section-title">Export Data</h2></div>
+                    <div class="action-grid" id="export-actions"></div>
+                </section>
+                <section id="settings" class="view-section">
+                    <div class="header-gradient"><h2 class="section-title">Settings</h2></div>
+                    <div id="settings-results"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script type="module" src="popup.js"></script>
+</body>
+</html>
