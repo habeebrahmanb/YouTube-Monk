@@ -38,16 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (demoTab) {
             const dummyData = {
                 videoId: "dQw4w9WgXcQ",
-                title: "How to Build a Chrome Extension in 2026 (Manifest V3)",
-                channel: "Dev Mastery",
-                views: "1542000",
-                likes: "85000",
-                description: "Learn how to build a modern Chrome Extension using Manifest V3!\n\nCheck out my website: https://example.com\n\n#chrome #extension #coding",
-                tags: ["chrome extension", "tutorial", "manifest v3", "javascript", "web development", "coding", "programming", "software", "developer", "google chrome"],
-                uploadDate: "2026-07-15T12:00:00Z",
-                comments: "4200",
-                duration: "14m32s",
-                category: "Science & Technology",
+                title: "Dhruv Rathee's latest YouTube video Malayalam Explanation | തകരുന്ന ഇന്ത്യൻ സമ്പത്ത് വ്യവസ്ഥ",
+                channel: "Trendmojo by Shinu",
+                views: "1300000",
+                likes: "17200",
+                description: "This is a detailed Malayalam explanation of Dhruv Rathee's latest video regarding the Indian economy.\n\nLinks:\nhttps://example.com\nhttps://example.com/2\nhttps://example.com/3\n\n#malayalam #dhruvrathee #economy",
+                tags: [],
+                uploadDate: "2026-07-16T05:26:06-07:00",
+                comments: "1266000000",
+                duration: "24m0s",
+                category: "News & Politics",
                 thumbnailUrl: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
             };
 
