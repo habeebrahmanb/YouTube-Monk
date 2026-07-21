@@ -37,18 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const demoTab = urlParams.get('demo');
         if (demoTab) {
             const dummyData = {
-                videoId: "dQw4w9WgXcQ",
-                title: "Dhruv Rathee's latest YouTube video Malayalam Explanation | തകരുന്ന ഇന്ത്യൻ സമ്പത്ത് വ്യവസ്ഥ",
-                channel: "Trendmojo by Shinu",
-                views: "1300000",
-                likes: "17200",
+                videoId: "faTbfs-KELI",
+                title: "2025 Royal Enfield Scram 440. Ride Review. Malayalam",
+                channel: "SUNNY SIDE Malayalam",
+                views: "17000",
+                likes: "358",
                 description: "This is a detailed Malayalam explanation of Dhruv Rathee's latest video regarding the Indian economy.\n\nLinks:\nhttps://example.com\nhttps://example.com/2\nhttps://example.com/3\n\n#malayalam #dhruvrathee #economy",
                 tags: [],
-                uploadDate: "2026-07-16T05:26:06-07:00",
+                uploadDate: "9 hours ago",
                 comments: "1266000000",
                 duration: "24m0s",
-                category: "News & Politics",
-                thumbnailUrl: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+                category: "Autos & Vehicles",
+                thumbnailUrl: "https://img.youtube.com/vi/faTbfs-KELI/maxresdefault.jpg"
             };
 
             setTimeout(() => {

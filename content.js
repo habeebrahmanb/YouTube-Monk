@@ -16,12 +16,16 @@ function extractVideoData() {
         const parseYTNumber = (str) => {
             if (!str) return '0';
             let s = str.toString().toUpperCase().replace(/,/g, '');
-            let multiplier = 1;
-            if (s.includes('K')) multiplier = 1000;
-            else if (s.includes('M')) multiplier = 1000000;
-            else if (s.includes('B')) multiplier = 1000000000;
+            let match = s.match(/([0-9.]+)\s*([KMB]?)/);
+            if (!match) return '0';
+            let num = parseFloat(match[1]);
+            let suffix = match[2];
             
-            let num = parseFloat(s.replace(/[^0-9.]/g, ''));
+            let multiplier = 1;
+            if (suffix === 'K') multiplier = 1000;
+            else if (suffix === 'M') multiplier = 1000000;
+            else if (suffix === 'B') multiplier = 1000000000;
+            
             if (isNaN(num)) return '0';
             return Math.floor(num * multiplier).toString();
         };
@@ -100,10 +104,13 @@ function extractVideoData() {
         const tags = Array.from(metaTags).map(tag => tag.content);
 
         // Upload Date
-        let uploadDate = getMeta('meta[itemprop="datePublished"]') || getMeta('meta[itemprop="uploadDate"]');
+        let uploadDate = '';
+        const dateNode = document.querySelector('#info-strings yt-formatted-string, yt-formatted-string#info span:nth-child(3), #bottom-row #description-inner #info-container yt-formatted-string:nth-child(3)');
+        if (dateNode && dateNode.innerText && dateNode.innerText.trim().length > 0) {
+            uploadDate = dateNode.innerText.trim();
+        }
         if (!uploadDate) {
-            const dateNode = document.querySelector('yt-formatted-string#info span:nth-child(3), #info-strings yt-formatted-string');
-            uploadDate = dateNode ? dateNode.innerText : '';
+            uploadDate = getMeta('meta[itemprop="datePublished"]') || getMeta('meta[itemprop="uploadDate"]');
         }
 
         // Comments
