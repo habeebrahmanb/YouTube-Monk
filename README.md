@@ -1,4 +1,4 @@
-# YouTube Monk
+# YouTube Monk - YouTube SEO Tool
 
 **The Ultimate YouTube SEO & Creator Toolkit**
 
